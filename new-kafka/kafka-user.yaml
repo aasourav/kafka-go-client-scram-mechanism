@@ -1,0 +1,14 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaUser
+metadata:
+  name: sourav-custom
+  labels:
+    strimzi.io/cluster: my-cluster
+spec:
+  authentication:
+    type: scram-sha-512
+    password:
+      valueFrom: 
+        secretKeyRef:
+          name: kafka-custom-secret
+          key: password
